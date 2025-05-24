@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portal Loading</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="loading-overlay">
+    <section class="loading">
+      <div class="portal-ring"></div>
+
+      <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Cat" class="mascot" />
+
+      <span class="typing-text"></span>
+      <span class="loading__author">– Generating a new reality...</span>
+
+      <div class="progress-bar-glow"></div>
+    </section>
+  </div>
+
+  <script>
+    const txt = 'Initializing portal sequence...';
+    let i = 0;
+    const typingEl = document.querySelector('.typing-text');
+
+    function typeWriter() {
+      if (i < txt.length) {
+        typingEl.innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typeWriter, 100);
+      }
+    }
+
+    typeWriter();
+
+    setTimeout(() => {
+      document.querySelector('.loading-overlay').style.opacity = '0';
+      setTimeout(() => {
+        document.querySelector('.loading-overlay').style.display = 'none';
+      }, 1000);
+    }, 500000);
+  </script>
+
+</body>
+</html>
